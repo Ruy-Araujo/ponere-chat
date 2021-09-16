@@ -1,34 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto
 
-## Getting Started
+Chat com sistema de login.
 
-First, run the development server:
+<p align="center">
+<img src="http://placehold.it/850x315" alt="preview project" border="0">
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Sobre
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Projeto de implementação de um chat para a diciplina Ambiente de desenvolvimento e Operação (DevOps)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Consiste em um chat simples com funcionalidades basicas.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Você pode ver um demostranção do projeto [em breve]().
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Recursos
 
-## Learn More
+- [ ] Cadastro
+- [ ] Autenticação
+- [ ] Chat
+- [ ] Seleção de Interlocutor
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Rodando o projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Essas instruções permitirão que você obtenha uma copia do projeto em sua maquina local com proposito de desenvolvimento ou testes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📋 Pre-requisitos
 
-## Deploy on Vercel
+Em breve 🔜
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Instalação e Execução
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Em breve 🔜
+
+## 🛠️ Technologies
+
+Em breve 🔜
+
+## Autores
+
+[<img src="https://avatars.githubusercontent.com/u/53796141?v=4" width="80px" style="border-radius:50%"/>](https://github.com/Ruy-Araujo)
+
+_Ruy Araujo_
+
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>](https://www.linkedin.com/in/ruy-araujo/)
+[<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>](https://github.com/Ruy-Araujo)
+
+[<img src="https://avatars.githubusercontent.com/u/32309203?v=4" width="80px" style="border-radius:50%"/>](https://github.com/caiobas)
+
+_caiobas_
+
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>]()
+[<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>](https://github.com/caiobas)
+
+[<img src="https://avatars.githubusercontent.com/u/90728045?v=4" width="80px" style="border-radius:50%"/>](https://github.com/CamillaTB)
+
+_CamillaTB_
+
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>]()
+[<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>](https://github.com/CamillaTB)
+
+[<img src="https://avatars.githubusercontent.com/u/87281978?v=4" width="80px" style="border-radius:50%"/>](https://github.com/Leonzordx)
+
+_Leonzordx_
+
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>]()
+[<img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>](https://github.com/Leonzordx)
+
+## 📷 Prints
+
+![Desktop Index Page](./src/media/IndexPage.jpg)
+
+![Mobile Index Page](./src/media/mobile_index.png)
+
+## 📄 License
+
+Em breve 🔜
