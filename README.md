@@ -1,6 +1,6 @@
-# Projeto
+# Projeto Ponere
 
-Chat com sistema de login.
+Com o Ponere chat, suas mensagens são rápidas, simples, seguras e gratuitas. Disponível para web em todo o mundo.
 
 <p align="center">
 <img src="http://placehold.it/850x315" alt="preview project" border="0">
@@ -33,9 +33,11 @@ Em breve 🔜
 
 Em breve 🔜
 
-## 🛠️ Technologies
+## 🛠️ Tecnologias
 
-Em breve 🔜
+- [React]()
+- [Next]()
+- [AWS]()
 
 ## Autores
 
