@@ -1,8 +1,12 @@
+import Link from 'next/link';
+
 const Button = (props) => {
   return (
-    <a href={props.href} className={props.style}>
-      {props.content.toUpperCase()}
-    </a>
+    <>
+      <Link href={props.href}>
+        <a className={props.style}>{props.content.toUpperCase()}</a>
+      </Link>
+    </>
   );
 };
 
