@@ -1,7 +1,6 @@
 import styles from '../styles/Login.module.css';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
-import Button from '../components/Button';
 
 export default function Login() {
   /*
@@ -41,9 +40,9 @@ export default function Login() {
               <a className={styles.link}>cadastre-se</a>
             </Link>
           </span>
-          <button type='submit' className={styles.btnPrimary}>
+          <Link href='/app'><button type='submit' className={styles.btnPrimary}>
             login
-          </button>
+          </button></Link>
           <Link href='/'>
             <button className={styles.btnSecundary}>voltar</button>
           </Link>
