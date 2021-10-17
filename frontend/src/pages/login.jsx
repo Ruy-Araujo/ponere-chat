@@ -1,6 +1,6 @@
-import styles from '../styles/Login.module.css';
-import Head from 'next/dist/shared/lib/head';
-import Link from 'next/link';
+import styles from "../styles/Login.module.css";
+import Head from "next/dist/shared/lib/head";
+import Link from "next/link";
 
 export default function Login() {
   /*
@@ -8,42 +8,49 @@ export default function Login() {
    */
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('foi');
+    console.log("foi");
   }
 
   return (
     <div className={styles.container}>
       <Head>
         <title>Login</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <main className={styles.main}>
         <h1>LOGIN</h1>
-        <form onSubmit={handleSubmit} method='post' id='login' className={styles.form}>
+        <form
+          onSubmit={handleSubmit}
+          method="post"
+          id="login"
+          className={styles.form}
+        >
           <input
-            name='userName'
-            placeholder='Usuario'
-            type='text'
-            id='userName'
+            name="userName"
+            placeholder="Usuario"
+            type="text"
+            id="userName"
             className={styles.input}
           />
           <input
-            name='password'
-            placeholder='Senha'
-            type='password'
-            id='password'
+            name="password"
+            placeholder="Senha"
+            type="password"
+            id="password"
             className={styles.input}
           />
           <span className={styles.span}>
             Não possui cadastro?
-            <Link href='/register'>
+            <Link href="/register" passHref>
               <a className={styles.link}>cadastre-se</a>
             </Link>
           </span>
-          <Link href='/app'><button type='submit' className={styles.btnPrimary}>
-            login
-          </button></Link>
-          <Link href='/'>
+          <Link href="/app" passHref>
+            <button type="submit" className={styles.btnPrimary}>
+              login
+            </button>
+          </Link>
+          <Link href="/" passHref>
             <button className={styles.btnSecundary}>voltar</button>
           </Link>
         </form>

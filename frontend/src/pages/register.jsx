@@ -36,14 +36,14 @@ export default function Register() {
           />
           <span className={styles.span}>
             Já possui cadastro?
-            <Link href='/login'>
+            <Link href='/login' passHref>
               <a className={styles.link}>faça login</a>
             </Link>
           </span>
           <button type='submit' className={styles.btnPrimary}>
             registrar
           </button>
-          <Link href='/'>
+          <Link href='/' passHref>
             <button className={styles.btnSecundary}>voltar</button>
           </Link>
         </form>
