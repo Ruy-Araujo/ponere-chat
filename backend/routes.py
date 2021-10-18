@@ -5,6 +5,11 @@ def sign_in():
     # Logic for sign_in
     return "Login realizado com sucesso!", 200
 
+@app.route("/sign-out", methods=['POST'])
+def sign_out():
+    # Logic for sign_out
+    return "Você foi deslogado com sucesso!", 200
+
 @app.route("/sign-up", methods=['POST'])
 def sign_up():
     # Logic for sign_up
