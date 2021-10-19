@@ -71,9 +71,18 @@ _Leonzordx_
 
 ## 📷 Prints
 
-![Desktop Index Page](./src/media/IndexPage.jpg)
+![Desktop Index Page](./media/IndexPage.jpg)
 
-![Mobile Index Page](./src/media/mobile_index.png)
+![Mobile Index Page](./media/mobile_index.png)
+
+![Desktop Login Page](./media/desktop_Login.png)
+![Desktop Register Page](./media/desktop_Cadastro.png)
+
+![Mobile Login Page](./media/mobile_Login.png)
+![Mobile Register Page](./media/mobile_Cadastro.png)
+
+![Desktop App](./media/desktop_App.png)
+
 
 ## 📄 License
 
