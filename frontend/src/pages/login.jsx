@@ -6,9 +6,9 @@ export default function Login() {
   /*
   Responsavel por realizar o request de login
    */
-  function handleSubmit(e) {
+
+  function loginSubmit(e) {
     e.preventDefault();
-    console.log("foi");
   }
 
   return (
@@ -20,14 +20,14 @@ export default function Login() {
       <main className={styles.main}>
         <h1>LOGIN</h1>
         <form
-          onSubmit={handleSubmit}
+          onSubmit={loginSubmit}
           method="post"
           id="login"
           className={styles.form}
         >
           <input
             name="userName"
-            placeholder="Usuario"
+            placeholder="Usuário"
             type="text"
             id="userName"
             className={styles.input}

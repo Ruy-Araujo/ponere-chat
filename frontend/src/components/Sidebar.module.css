@@ -1,0 +1,94 @@
+.sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 76px calc(100vh - 76px);
+
+  border-right: #d9d9d9 1px solid;
+}
+
+.menu {
+  background: rgba(200, 217, 234, 0.4);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.menu > form {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.menu > form > input {
+  height: 45px;
+  padding-left: 10px;
+  margin-left: 20px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.menu > form > button {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+  background-image: url("../../public/add_circle.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  filter: invert(65%) sepia(4%) saturate(444%) hue-rotate(314deg)
+    brightness(90%) contrast(89%);
+}
+
+.chat_list {
+  overflow-y: auto;
+}
+
+.chat_info {
+  height: 72px;
+  padding-left: 20px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  border-bottom: #d9d9d9 1px solid;
+}
+
+.chat_info:hover {
+  background: #f5f5f5;
+}
+
+.chat_info:active {
+  background: #ebebeb;
+}
+
+.chat_info > h2 {
+  padding-left: 20px;
+  /* font-size: 17px; */
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+/* Scroll Bar */
+.chat_list::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+  background-color: #f5f5f5;
+}
+.chat_list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.chat_list::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.08);
+}
