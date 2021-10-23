@@ -95,7 +95,7 @@ function Chat(props) {
         >
           <input
             name="message"
-            placeholder="Degite sua menssagem"
+            placeholder="Digite sua menssagem"
             type="text"
             id="message"
             className={styles.messageInput}
