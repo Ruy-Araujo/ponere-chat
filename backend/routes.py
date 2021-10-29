@@ -31,7 +31,16 @@ def sign_out():
 @app.route("/sign-up", methods=['POST'])
 def sign_up():
     # Logic for sign_up
-    return "Cadastro realizado com sucesso!", 201
+    req_user = request.json
+
+    for db_user in db["users"]:
+        if db_user["username"] == req_user["username"]:
+            return jsonify({"error": "username already exist"}), 403
+
+    db["users"].append(
+        {"username": req_user["username"], "password": req_user["password"]})
+
+    return jsonify({"message": "user create with sucess"}), 201
 
 
 @app.route("/friend", methods=['GET'])
