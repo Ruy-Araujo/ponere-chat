@@ -15,6 +15,12 @@ db = {
 }
 
 
+# Rota para testes
+@app.route("/")
+def index_page():
+    return"<h1>Welcome to Ponere Chat<h1>"
+
+
 @app.route("/sign-in", methods=['POST'])
 def sign_in():
     # Pega body da requisição
@@ -24,7 +30,7 @@ def sign_in():
 
     if not username or not password:
         return jsonify({"error": "Wrong body data"}), 400
-        
+
     # Verifica se login e senha existem, e se estão corretos.
     for db_user in db["users"]:
         if db_user["username"] == username:
@@ -56,7 +62,6 @@ def sign_up():
     return jsonify({"message": "user create with sucess"}), 201
 
 
-
 @app.route("/friend", methods=['POST'])
 def list_friends():
     # Pega body da requisição
@@ -69,8 +74,8 @@ def list_friends():
     for db_user in db["users"]:
         if db_user["username"] == username:
             return jsonify({"friends": db_user["friends"]}), 200
-    
-    return jsonify({"error": "username not found"}), 404 
+
+    return jsonify({"error": "username not found"}), 404
 
 
 @app.route("/friend", methods=['POST'])
@@ -84,11 +89,11 @@ def add_friend():
         return jsonify({"error": "Wrong body data"}), 400
 
     for db_user_destination in db["users"]:
-        if username_destination == db_user_destination["username"]: 
+        if username_destination == db_user_destination["username"]:
             if username_origin not in db_user_destination["friends"]:
                 username_destination["friends"].append(username_origin)
             else:
-                return jsonify({"error": f"{username_destination} is already your friend"}), 400 
+                return jsonify({"error": f"{username_destination} is already your friend"}), 400
 
             for db_user_origin in db["users"]:
                 if username_origin == db_user_origin["username"]:
@@ -111,14 +116,15 @@ def get_chat():
 
     for db_message in db["messages"]:
         if (
-            (db_message['origin'] == username_origin and db_message['destination'] == username_destination ) 
-            or 
-            (db_message['origin'] == username_destination and db_message['destination'] == username_origin)
+            (db_message['origin'] == username_origin and db_message['destination']
+             == username_destination)
+            or
+            (db_message['origin'] ==
+             username_destination and db_message['destination'] == username_origin)
         ):
             messages.append(db_message)
 
     messages.sort(lambda x: x["datetime"], reverse=True)
-
 
     return messages
 
