@@ -78,7 +78,7 @@ def list_friends():
     return jsonify({"error": "username not found"}), 404
 
 
-@app.route("/friend", methods=['POST'])
+@app.route("/friend/add", methods=['POST'])
 def add_friend():
     # Pega body da requisição
     req_user = request.json
