@@ -22,7 +22,6 @@ export default function Register() {
     }).then(async (response) => {
       const responseStatus = response.status
       const responseData = await response.json();
-      console.log(responseData)
 
       /* Logica de registro */
       switch (responseStatus) {

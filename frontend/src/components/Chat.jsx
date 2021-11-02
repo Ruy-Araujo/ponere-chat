@@ -11,7 +11,6 @@ function Chat(props) {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  console.log(process.env.NEXT_PUBLIC_API)
   /* Obter mensagens */
   useEffect(() => {
     fetch(API_GET_MESSAGE, {
@@ -23,7 +22,6 @@ function Chat(props) {
     })
       .then(async (response) => {
         const responseData = await response.json();
-        console.log(responseData)
         setMessages([...responseData])
       })
   }, [props.currentChat])
@@ -47,7 +45,6 @@ function Chat(props) {
     }).then(async (response) => {
       const responseStatus = response.status
       const respondeData = await response.json();
-      console.log(respondeData)
 
       if (responseStatus === 201) {
         const new_message = {
@@ -55,7 +52,6 @@ function Chat(props) {
           destination: message.username_destination,
           message: message.message
         }
-        console.log(messages)
         setMessages([...messages, new_message])
       }
     })
@@ -85,7 +81,6 @@ function Chat(props) {
       <div className={styles.chat_body}>
         {
           messages.slice().reverse().map((message, i) => {
-            console.log(message.message)
             return (
               <p
                 key={`ms_${i}`}

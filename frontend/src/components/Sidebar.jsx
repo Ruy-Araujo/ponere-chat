@@ -42,7 +42,6 @@ function Sidebar(props) {
     }).then(async (response) => {
       const responseStatus = response.status
       const respondeData = await response.json();
-      console.log(respondeData)
 
       switch (responseStatus) {
         case 200:
