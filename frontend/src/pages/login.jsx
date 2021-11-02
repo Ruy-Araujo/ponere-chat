@@ -1,14 +1,38 @@
 import styles from "../styles/Login.module.css";
 import Head from "next/dist/shared/lib/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import nookies from 'nookies'
+
 
 export default function Login() {
-  /*
-  Responsavel por realizar o request de login
-   */
+  const API_LOGIN = `${process.env.NEXT_PUBLIC_API}/sign-in`
+  const router = useRouter();
 
+  /* Responsavel por realizar o request de login  */
   function loginSubmit(e) {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const userName = formData.get("userName")
+
+    fetch(API_LOGIN, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username": userName, "password": formData.get("password") }),
+    }).then(async (response) => {
+      const respondeData = await response.json();
+
+      /* Logica de login */
+      if (respondeData.login) {
+        nookies.set(null, 'userProps', JSON.stringify({ "userName": userName }), {
+          maxAge: 300,
+          path: '/',
+        })
+        router.push("/app")
+      }
+    });
   }
 
   return (
@@ -45,11 +69,11 @@ export default function Login() {
               <a className={styles.link}>cadastre-se</a>
             </Link>
           </span>
-          <Link href="/app" passHref>
-            <button type="submit" className={styles.btnPrimary}>
-              login
-            </button>
-          </Link>
+
+          <button type="submit" className={styles.btnPrimary}>
+            login
+          </button>
+
           <Link href="/" passHref>
             <button className={styles.btnSecundary}>voltar</button>
           </Link>
@@ -58,3 +82,5 @@ export default function Login() {
     </div>
   );
 }
+
+
