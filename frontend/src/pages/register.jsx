@@ -1,14 +1,38 @@
 import styles from '../styles/Register.module.css';
 import Head from 'next/dist/shared/lib/head';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 export default function Register() {
-  /*
-  Responsavel por realizar o request de registro
-   */
+  const API_REGISTER = "https://cors-origin-backend-her-ebg24x.herokuapp.com/sign-up"
+  const router = useRouter();
+
+  /*  Responsavel por realizar o request de registro   */
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('foi');
+    const formData = new FormData(e.target);
+
+    /* Logica de chamada da API */
+    fetch(API_REGISTER, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username": formData.get("userName"), "password": formData.get("password") }),
+    }).then(async (response) => {
+      const responseStatus = response.status
+      const responseData = await response.json();
+      console.log(responseData)
+
+      /* Logica de registro */
+      switch (responseStatus) {
+        case 201:
+          router.push("/login")
+          break
+        default:
+          console.log("erro")
+      }
+    });
   }
 
   return (

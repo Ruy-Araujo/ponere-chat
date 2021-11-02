@@ -1,27 +1,71 @@
 import Avatar from "./Avatar";
 import styles from "./Sidebar.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Sidebar(props) {
-  const [names, setNames] = useState(["Ruy", "Igor", "Camilla", "Goya"]);
+  const API = "https://cors-origin-backend-her-ebg24x.herokuapp.com"
+  const userName = props.userName
+  const [names, setNames] = useState(["Ponere Chat"]);
   const [name, setName] = useState("");
+  const API_FRIENDS = `${API}/friend`
+  const API_ADD_FRIEND = `${API}/friend/add`
+  const API_MESSAGE = `${API}/message`
 
-  /* Put here add chat roon logic */
-  function addNick(e) {
+  /* Obter amigos */
+  useEffect(() => {
+    fetch(API_FRIENDS, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username": userName }),
+    })
+      .then(async (response) => {
+
+        const responseData = await response.json();
+        if (responseData.friends) {
+          setNames([...names, ...responseData.friends,])
+        }
+      })
+  }, [])
+
+  /* ------------------- Adicionar amigos ------------------- */
+  function addFriend(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const nickName = formData.get("nickName")
 
-    if (formData.get("nickName")) {
-      const nick = formData.get("nickName");
-      setNames([...names, nick]);
-      setName("");
-    }
+    fetch(API_ADD_FRIEND, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username_destination": userName, "username_origin": nickName }),
+    }).then(async (response) => {
+      const responseStatus = response.status
+      const respondeData = await response.json();
+      console.log(respondeData)
+
+      switch (responseStatus) {
+        case 200:
+          setNames([...names, nickName]);
+          setName("");
+          break
+        default:
+          console.log("erro")
+          setName("");
+      }
+    })
+  }
+
+  function openChat(name) {
+    props.setChat(name)
   }
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.menu}>
-        <form onSubmit={addNick} method="post" id="addNick">
+        <form onSubmit={addFriend} method="post" id="addNick">
           <input
             type="text"
             placeholder="Digite o nick do seu amigo"
@@ -38,10 +82,10 @@ function Sidebar(props) {
       <div className={styles.chat_list}>
         {names.map((name, i) => {
           return (
-            <div className={styles.chat_info} key={`ch_${i}`}>
+            <a className={styles.chat_info} key={`ch_${i}`} onClick={() => openChat(name)} value={name}>
               <Avatar name={name} />
               <h2>{name}</h2>
-            </div>
+            </a>
           );
         })}
       </div>

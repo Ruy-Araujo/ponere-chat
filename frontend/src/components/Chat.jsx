@@ -3,8 +3,9 @@ import { useState } from "react";
 import Avatar from "./Avatar";
 
 function Chat(props) {
-  const userName = "ruy";
-
+  const userName = props.userName;
+  const API = "https://cors-origin-backend-her-ebg24x.herokuapp.com"
+  const API_SEND_MESSAGE = `${API}/message`
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     {
@@ -44,12 +45,34 @@ function Chat(props) {
     },
   ]);
 
-  /* Put here sende menssage logic */
+  /* Logica de mensagens */
   function sendMessage(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
 
-    if (formData.get("message")) {
+    fetch(API_SEND_MESSAGE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username_destination": userName, "username_origin": nickName }),
+    }).then(async (response) => {
+      const responseStatus = response.status
+      const respondeData = await response.json();
+      console.log(respondeData)
+
+      switch (responseStatus) {
+        case 200:
+          setNames([...names, nickName]);
+          setName("");
+          break
+        default:
+          console.log("erro")
+          setName("");
+      }
+    })
+
+    /* if (formData.get("message")) {
       const obj = {
         message: formData.get("message"),
         origin: "",
@@ -59,14 +82,16 @@ function Chat(props) {
       };
       setMessages([...messages, obj]);
       setMessage("");
-    }
+    } */
   }
+
+
 
   return (
     <div className={styles.chatContainer}>
       <div className={styles.chatHeader}>
-        <Avatar name="Ruy" />
-        <h1>Ruy</h1>
+        <Avatar name={userName} />
+        <h1>{userName}</h1>
       </div>
 
       <div className={styles.chat_body}>
