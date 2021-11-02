@@ -3,13 +3,11 @@ import styles from "./Sidebar.module.css";
 import { useState, useEffect } from "react";
 
 function Sidebar(props) {
-  const API = "https://cors-origin-backend-her-ebg24x.herokuapp.com"
   const userName = props.userName
   const [names, setNames] = useState(["Ponere Chat"]);
   const [name, setName] = useState("");
-  const API_FRIENDS = `${API}/friend`
-  const API_ADD_FRIEND = `${API}/friend/add`
-  const API_MESSAGE = `${API}/message`
+  const API_FRIENDS = `${process.env.NEXT_PUBLIC_API}/friend`
+  const API_ADD_FRIEND = `${process.env.NEXT_PUBLIC_API}/friend/add`
 
   /* Obter amigos */
   useEffect(() => {

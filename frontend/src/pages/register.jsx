@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 
 export default function Register() {
-  const API_REGISTER = "https://cors-origin-backend-her-ebg24x.herokuapp.com/sign-up"
+  const API_REGISTER = `${process.env.NEXT_PUBLIC_API}/sign-up`
   const router = useRouter();
 
   /*  Responsavel por realizar o request de registro   */

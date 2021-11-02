@@ -6,9 +6,9 @@ import nookies from 'nookies'
 
 
 export default function Login() {
-  const API_LOGIN = "https://cors-origin-backend-her-ebg24x.herokuapp.com/sign-in"
+  const API_LOGIN = `${process.env.NEXT_PUBLIC_API}/sign-in`
   const router = useRouter();
-  
+
   /* Responsavel por realizar o request de login  */
   function loginSubmit(e) {
     e.preventDefault();

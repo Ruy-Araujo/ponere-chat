@@ -1,76 +1,66 @@
 import styles from "./Chat.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Avatar from "./Avatar";
+
 
 function Chat(props) {
   const userName = props.userName;
-  const API = "https://cors-origin-backend-her-ebg24x.herokuapp.com"
-  const API_SEND_MESSAGE = `${API}/message`
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      message: "Oi ruy.",
-      origin: "caio",
-      destination: "ruy",
-      date: "15/10/2021",
-      time: "22:00",
-    },
-    {
-      message: "Oi Caio.",
-      origin: "ruy",
-      destination: "caio",
-      date: "15/10/2021",
-      time: "22:00",
-    },
-    {
-      message: "Tudo bem?",
-      origin: "caio",
-      destination: "ruy",
-      date: "15/10/2021",
-      time: "22:00",
-    },
-    {
-      message: "Tudo sim, e você?",
-      origin: "ruy",
-      destination: "caio",
-      date: "15/10/2021",
-      time: "22:00",
-    },
-    {
-      message: "Estou bem também!",
-      origin: "caio",
-      destination: "ruy",
-      date: "15/10/2021",
-      time: "22:00",
-    },
-  ]);
+  const API_SEND_MESSAGE = `${process.env.NEXT_PUBLIC_API}/message`
+  const API_GET_MESSAGE = `${process.env.NEXT_PUBLIC_API}/chat`
 
-  /* Logica de mensagens */
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  console.log(process.env.NEXT_PUBLIC_API)
+  /* Obter mensagens */
+  useEffect(() => {
+    fetch(API_GET_MESSAGE, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ "username_origin": userName, "username_destination": props.currentChat }),
+    })
+      .then(async (response) => {
+        const responseData = await response.json();
+        console.log(responseData)
+        setMessages([...responseData])
+      })
+  }, [props.currentChat])
+
+  /* Enviar mensagem */
   function sendMessage(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const message = {
+      "username_origin": userName,
+      "username_destination": props.currentChat,
+      "message": formData.get("message")
+    }
 
     fetch(API_SEND_MESSAGE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "username_destination": userName, "username_origin": nickName }),
+      body: JSON.stringify(message),
     }).then(async (response) => {
       const responseStatus = response.status
       const respondeData = await response.json();
       console.log(respondeData)
 
-      switch (responseStatus) {
-        case 200:
-          setNames([...names, nickName]);
-          setName("");
-          break
-        default:
-          console.log("erro")
-          setName("");
+      if (responseStatus === 201) {
+        const new_message = {
+          origin: message.username_origin,
+          destination: message.username_destination,
+          message: message.message
+        }
+        console.log(messages)
+        setMessages([...messages, new_message])
       }
     })
+
+    setMessage("");
 
     /* if (formData.get("message")) {
       const obj = {
@@ -85,13 +75,11 @@ function Chat(props) {
     } */
   }
 
-
-
   return (
     <div className={styles.chatContainer}>
       <div className={styles.chatHeader}>
-        <Avatar name={userName} />
-        <h1>{userName}</h1>
+        <Avatar name={props.currentChat} />
+        <h1>{props.currentChat}</h1>
       </div>
 
       <div className={styles.chat_body}>
