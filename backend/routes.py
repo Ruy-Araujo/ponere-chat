@@ -125,7 +125,7 @@ def get_chat():
             messages.append(db_message)
 
     if messages:
-        messages.sort(key=lambda x: x["datetime"], reverse=True)
+        messages.sort(key=lambda x: x["datetime"])
 
     return jsonify(messages)
 
