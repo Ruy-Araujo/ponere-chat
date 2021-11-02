@@ -29,7 +29,7 @@ function Chat(props) {
   }, [props.currentChat])
 
   /* Enviar mensagem */
-  function sendMessage(e) {
+  async function sendMessage(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const message = {
@@ -38,7 +38,7 @@ function Chat(props) {
       "message": formData.get("message")
     }
 
-    fetch(API_SEND_MESSAGE, {
+    await fetch(API_SEND_MESSAGE, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -83,20 +83,22 @@ function Chat(props) {
       </div>
 
       <div className={styles.chat_body}>
-        {messages.map((message, i) => {
-          return (
-            <p
-              key={`ms_${i}`}
-              className={
-                message.destination === userName
-                  ? styles.chat_message_In
-                  : styles.chat_message_Out
-              }
-            >
-              {message.message}
-            </p>
-          );
-        })}
+        {
+          messages.slice().reverse().map((message, i) => {
+            console.log(message.message)
+            return (
+              <p
+                key={`ms_${i}`}
+                className={
+                  message.destination === userName
+                    ? styles.chat_message_In
+                    : styles.chat_message_Out
+                }
+              >
+                {message.message}
+              </p>
+            );
+          })}
       </div>
 
       <div className={styles.chatFooter}>
