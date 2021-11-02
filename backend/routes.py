@@ -124,9 +124,10 @@ def get_chat():
         ):
             messages.append(db_message)
 
-    messages.sort(lambda x: x["datetime"], reverse=True)
+    if messages:
+        messages.sort(key=lambda x: x["datetime"], reverse=True)
 
-    return messages
+    return jsonify(messages)
 
 
 @app.route("/message", methods=['POST'])
