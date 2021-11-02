@@ -23,7 +23,6 @@ export default function Login() {
       body: JSON.stringify({ "username": userName, "password": formData.get("password") }),
     }).then(async (response) => {
       const respondeData = await response.json();
-      console.log(respondeData.login)
 
       /* Logica de login */
       if (respondeData.login) {
