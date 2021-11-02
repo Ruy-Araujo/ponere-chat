@@ -91,13 +91,13 @@ def add_friend():
     for db_user_destination in db["users"]:
         if username_destination == db_user_destination["username"]:
             if username_origin not in db_user_destination["friends"]:
-                username_destination["friends"].append(username_origin)
+                db_user_destination["friends"].append(username_origin)
             else:
                 return jsonify({"error": f"{username_destination} is already your friend"}), 400
 
             for db_user_origin in db["users"]:
                 if username_origin == db_user_origin["username"]:
-                    username_origin["friends"].append(username_destination)
+                    db_user_origin["friends"].append(username_destination)
                     return jsonify({"message": f"User {username_destination} add as a friend"}), 200
 
 
