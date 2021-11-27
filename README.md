@@ -3,7 +3,7 @@
 Com o Ponere chat, suas mensagens são rápidas, simples, seguras e gratuitas. Disponível para web em todo o mundo.
 
 <p align="center">
-<img src="http://placehold.it/850x315" alt="preview project" border="0">
+<img src="./media/banner.png" alt="preview project" border="0">
 </p>
 
 ## Sobre
@@ -16,10 +16,10 @@ Você pode ver um demostranção do projeto [em breve]().
 
 ## Recursos
 
-- [ ] Cadastro
-- [ ] Autenticação
-- [ ] Chat
-- [ ] Seleção de Interlocutor
+- [X] Cadastro
+- [X] Autenticação
+- [X] Chat
+- [X] Seleção de Interlocutor
 
 ## 🚀 Rodando o projeto
 
@@ -27,17 +27,85 @@ Essas instruções permitirão que você obtenha uma copia do projeto em sua maq
 
 ## 📋 Pre-requisitos
 
-Em breve 🔜
+### Front-end
+
+[Node.js versão 14+](https://nodejs.org/pt-br/download/)
+
+### Back-end
+
+[Python versão 3.5+](https://www.python.org/downloads/)
+
 
 ## 🔧 Instalação e Execução
 
-Em breve 🔜
+Instruções de como instalar e rodar o projeto em um ambiente local.
+
+Clone o projeto
+```
+git clone https://github.com/Ruy-Araujo/ponere-chat.git
+```
+
+### Front-end
+
+Acesso o diretorio de front-end
+```console
+cd frontend
+```
+
+Instale as dependencias necessarias 
+```console
+npm install
+```
+
+Rode o projeto
+```console
+npm run dev
+```
+
+Após isso o projeto estara rodando no endereço local: http://localhost:3000
+
+
+### Back-end
+
+Copie o arquivo de dependencias para a pasta backend
+
+windows
+```cmd
+copy .\requirements.txt .\backend
+```
+linux
+```sh
+cp requirements.txt ./backend
+```
+
+Acesse o diretorio de back-end
+```console
+cd backend
+```
+
+Instale as dependencias necessarias
+```console
+pip install -r requirements.txt
+```
+
+Rode o projeto
+```console
+python wsgi.py
+```
+
+Após isso o projeto estará rodando no endereço local: http://localhost:5000
 
 ## 🛠️ Tecnologias
 
-- [React]()
-- [Next]()
-- [AWS]()
+Front-end
+- [React](https://pt-br.reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Material-UI](https://material-ui.com/pt/)
+- [DiceBear](https://avatars.dicebear.com/)
+
+Back-end
+- [Heroku](https://www.heroku.com/)
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 
 ## Autores
 
@@ -86,4 +154,4 @@ _Leonzordx_
 
 ## 📄 License
 
-Em breve 🔜
+MIT license
